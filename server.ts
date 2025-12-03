@@ -5,6 +5,7 @@ import { createReadStream } from 'fs'
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+  baseURL: 'https://dashscope.aliyuncs.com/compatible-mode/v1'
 })
 
 const port = 3001
@@ -28,7 +29,7 @@ createServer(async (req, res) => {
     }
 
     const gptStream = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: 'deepseek-v3',
       messages: [{ role: 'user', content: prompt }],
       max_tokens: 100,
       stream: true, // stream

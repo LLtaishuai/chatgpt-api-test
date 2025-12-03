@@ -1,11 +1,11 @@
 import OpenAI from 'openai'
 import 'dotenv/config'
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY, baseURL: 'https://dashscope.aliyuncs.com/compatible-mode/v1' })
 
 async function main() {
   const stream = await openai.chat.completions.create({
-    model: 'gpt-3.5-turbo',
+    model: 'deepseek-v3',
     messages: [{ role: 'user', content: 'Introduce yourself' }],
     max_tokens: 100,
     stream: true, // stream
